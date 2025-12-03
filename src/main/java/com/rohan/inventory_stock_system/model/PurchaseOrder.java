@@ -1,6 +1,5 @@
 package com.rohan.inventory_stock_system.model;
 
-import com.rohan.inventory_stock_system.model.enums.PurchaseOrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +20,8 @@ public class PurchaseOrder {
     private Long id;
     @ManyToOne @JoinColumn(nullable = false)
     private Supplier supplier;
-    @Column(nullable = false) @Enumerated(EnumType.STRING)
-    private PurchaseOrderStatus status;
+    @Column(nullable = false)
+    private String status;
     private LocalDate expectedDate;
     @CreationTimestamp
     private LocalDateTime createdAt;

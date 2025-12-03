@@ -1,6 +1,5 @@
 package com.rohan.inventory_stock_system.model;
 
-import com.rohan.inventory_stock_system.model.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,8 +22,7 @@ public class Product {
     private String name;
     private String description;
     private String brand;
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    private String category;
     @Column(nullable = false)
     private BigDecimal price;
     private LocalDate releaseDate;
@@ -35,4 +33,8 @@ public class Product {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Product(Long id) {
+        this.id = id;
+    }
 }
