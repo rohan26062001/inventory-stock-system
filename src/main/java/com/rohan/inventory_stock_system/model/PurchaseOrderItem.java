@@ -2,23 +2,24 @@ package com.rohan.inventory_stock_system.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseOrderItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Long purchaseOrderId;
-    @Column(nullable = false)
-    private Long productId;
+    @ManyToOne @JoinColumn(nullable = false)
+    private PurchaseOrder purchaseOrder;
+    @ManyToOne @JoinColumn(nullable = false)
+    private Product product;
     @Column(nullable = false)
     private int orderedQty;
     @Column(nullable = false)
